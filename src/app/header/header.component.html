@@ -1,0 +1,63 @@
+<header class="header">
+    <div class="header__logo">
+        <img src="./logo.png" alt="logo" />
+
+        <div class="header__logo-text">
+            <span class="header__logo-text-title">e-Health</span>
+            <span class="header__logo-text-subtitle">Портал МЗ РК</span>
+        </div>
+    </div>
+
+    <ng-container>
+        <button [matMenuTriggerFor]="userMenu" class="header__user-type-button">
+            <ng-container [ngSwitch]="selectedUserType.id">
+                <app-physical-icon *ngSwitchCase="1"></app-physical-icon>
+                <app-legal-icon *ngSwitchCase="2"></app-legal-icon>
+                <app-gov-icon *ngSwitchCase="3"></app-gov-icon>
+            </ng-container>
+            {{ selectedUserType.name }}
+            <app-chevron-down-icon></app-chevron-down-icon>
+        </button>
+
+        <mat-menu #userMenu="matMenu" [class]="'header__user-type-menu'">
+            <button *ngFor="let userType of USER_TYPES" (click)="selectedUserType = userType"
+                class="header__user-type-menu-item" [class.active]="selectedUserType.id === userType.id">
+                <ng-container [ngSwitch]="userType.id">
+                    <app-physical-icon *ngSwitchCase="1"></app-physical-icon>
+                    <app-legal-icon *ngSwitchCase="2"></app-legal-icon>
+                    <app-gov-icon *ngSwitchCase="3"></app-gov-icon>
+                </ng-container>
+                {{ userType.name }}
+                <app-check-icon *ngIf="selectedUserType.id === userType.id"></app-check-icon>
+            </button>
+        </mat-menu>
+    </ng-container>
+
+    <label class="header__search">
+        <app-search-icon></app-search-icon>
+        <input type="text" placeholder="Поиск услуг" />
+    </label>
+
+    <button class="header__glasses">
+        <app-glasses-icon></app-glasses-icon>
+    </button>
+
+    <ng-container>
+        <button [matMenuTriggerFor]="langMenu" class="header__language-button">
+            {{ selectedLanguage.abbr }}
+            <app-chevron-down-icon></app-chevron-down-icon>
+        </button>
+
+        <mat-menu #langMenu="matMenu" [class]="'header__language-menu'">
+            <button *ngFor="let lang of LANGUAGES" (click)="selectedLanguage = lang" class="header__language-menu-item"
+                [class.active]="selectedLanguage.id === lang.id">
+                {{ lang.name }}
+            </button>
+        </mat-menu>
+    </ng-container>
+
+    <button class="header__login-button">
+        <app-user-icon></app-user-icon>
+        Войти
+    </button>
+</header>

@@ -1,0 +1,46 @@
+<footer class="footer">
+    <div class="footer__logo">
+        <img src="./logo.png" alt="logo" />
+
+        <div class="footer__logo-text">
+            <span class="footer__logo-text-title">e-Health</span>
+            <span class="footer__logo-text-subtitle">Портал МЗ РК</span>
+        </div>
+    </div>
+
+    <div class="footer__services">
+        <span class="footer__services-title">Услуги</span>
+
+        <ul class="footer__services-list">
+            <li class="footer__services-item" *ngFor="let service of SERVICES">
+                {{ service.name }}
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer__about">
+        <span class="footer__about-title">О проекте</span>
+
+        <ul class="footer__about-list">
+            <li class="footer__about-item" *ngFor="let about of ABOUT">
+                {{ about.name }}
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer__documents">
+        <span class="footer__documents-title">Документы</span>
+
+        <ul class="footer__documents-list">
+            <li class="footer__documents-item" *ngFor="let document of DOCUMENTS">
+                {{ document.name }}
+            </li>
+        </ul>
+    </div>
+
+    <div class="footer__social">
+        <app-x-icon></app-x-icon>
+        <app-instagram-icon></app-instagram-icon>
+        <app-youtube-icon></app-youtube-icon>
+    </div>
+</footer>
